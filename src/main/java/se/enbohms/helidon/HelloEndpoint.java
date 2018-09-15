@@ -10,12 +10,12 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @ApplicationScoped
-@Path("/helidon")
+@Path("/")
 public class HelloEndpoint {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("{name}")
+	@Path("/hello/{name}")
 	public Response sayHi(@PathParam("name") String name) {
 		return Response.ok(Json.createObjectBuilder().add("Hello ", name).build()).build();
 	}

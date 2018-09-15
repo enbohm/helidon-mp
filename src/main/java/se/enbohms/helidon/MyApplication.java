@@ -8,7 +8,7 @@ import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 @ApplicationScoped
-@ApplicationPath("/")
+@ApplicationPath("/helidon")
 public class MyApplication extends Application {
 
 	@Override
