@@ -11,6 +11,14 @@ import javax.ws.rs.core.Response;
 
 import org.eclipse.microprofile.metrics.annotation.Counted;
 
+/**
+ * Represent a simple endpoint which just returns a JSON structure taking the
+ * path parameter as input (e.g. http://.../helidon/hello/john -> {"Hello " :
+ * "John"})
+ * 
+ * @author enbohm
+ *
+ */
 @ApplicationScoped
 @Path("/")
 public class HelloEndpoint {
