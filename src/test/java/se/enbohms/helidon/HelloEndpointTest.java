@@ -6,7 +6,6 @@ import java.io.StringReader;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 
 import javax.json.Json;
@@ -36,8 +35,7 @@ public class HelloEndpointTest {
 	@Test
 	public void should_return_valid_name() throws Exception {
 		var httpClient = HttpClient.newBuilder().build();
-		var request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/helidon/hello/JD"))
-				.build();
+		var request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/helidon/hello/JD")).build();
 		var response = httpClient.send(request, BodyHandlers.ofString());
 		JsonObject jsonObject = Json.createReader(new StringReader(response.body())).readObject();
 		assertEquals("Name should be JD", "JD", jsonObject.getString("Hello"));
