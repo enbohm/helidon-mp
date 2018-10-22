@@ -21,8 +21,8 @@ public class HelloEndpointTest {
 
 	@BeforeClass
 	public static void startTheServer() throws Exception {
-		server = Main.startServer();
-		Thread.sleep(1 * 1000);
+		server = Server.create();
+		server.start();
 	}
 
 	@AfterClass
@@ -32,11 +32,10 @@ public class HelloEndpointTest {
 
 	@Test
 	public void should_return_valid_name() throws Exception {
-		HttpURLConnection conn;
-		conn = getURLConnection("GET", "/helidon/hello/JD");
+		HttpURLConnection conn = getURLConnection("GET", "/helidon/hello/JD");
 		JsonReader jsonReader = Json.createReader(conn.getInputStream());
 		JsonObject jsonObject = jsonReader.readObject();
-		assertEquals("Name should be JD", "JD", jsonObject.getString("Hello "));
+		assertEquals("Name should be JD", "JD", jsonObject.getString("Hello"));
 	}
 
 	private HttpURLConnection getURLConnection(String method, String path) throws Exception {

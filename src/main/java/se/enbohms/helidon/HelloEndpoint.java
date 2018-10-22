@@ -28,6 +28,6 @@ public class HelloEndpoint {
 	@Path("/hello/{name}")
 	@Counted
 	public Response sayHi(@PathParam("name") String name) {
-		return Response.ok(Json.createObjectBuilder().add("Hello ", name).build()).build();
+		return Response.ok(Json.createObjectBuilder().add("Hello", name).build()).build();
 	}
 }

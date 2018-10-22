@@ -130,25 +130,6 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-      <dependency>
-        <groupId>org.jboss</groupId>
-        <artifactId>jandex</artifactId>
-        <version>2.0.4.Final</version>
-      </dependency>
-      <dependency>
-        <groupId>io.helidon.microprofile.bundles</groupId>
-        <artifactId>helidon-microprofile-1.1</artifactId>
-      </dependency>
-      <dependency>
-        <groupId>javax.activation</groupId>
-        <artifactId>javax.activation-api</artifactId>
-        <version>1.2.0</version>
-      </dependency>
-      <dependency>
-        <groupId>org.glassfish.jersey.media</groupId>
-        <artifactId>jersey-media-json-binding</artifactId>
-        <version>2.26</version>
-      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -161,7 +142,6 @@
       <groupId>org.glassfish.jersey.media</groupId>
       <artifactId>jersey-media-json-binding</artifactId>
     </dependency>
-
     <dependency>
       <groupId>org.jboss</groupId>
       <artifactId>jandex</artifactId>
