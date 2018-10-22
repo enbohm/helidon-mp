@@ -2,12 +2,15 @@ package se.enbohms.helidon;
 
 import static org.junit.Assert.assertEquals;
 
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.io.StringReader;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.net.http.HttpResponse.BodyHandlers;
 
 import javax.json.Json;
 import javax.json.JsonObject;
-import javax.json.JsonReader;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -32,17 +35,12 @@ public class HelloEndpointTest {
 
 	@Test
 	public void should_return_valid_name() throws Exception {
-		HttpURLConnection conn = getURLConnection("GET", "/helidon/hello/JD");
-		JsonReader jsonReader = Json.createReader(conn.getInputStream());
-		JsonObject jsonObject = jsonReader.readObject();
+		var httpClient = HttpClient.newBuilder().build();
+		var request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/helidon/hello/JD"))
+				.build();
+		var response = httpClient.send(request, BodyHandlers.ofString());
+		JsonObject jsonObject = Json.createReader(new StringReader(response.body())).readObject();
 		assertEquals("Name should be JD", "JD", jsonObject.getString("Hello"));
 	}
 
-	private HttpURLConnection getURLConnection(String method, String path) throws Exception {
-		URL url = new URL("http://localhost:8080" + path);
-		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-		conn.setRequestMethod(method);
-		conn.setRequestProperty("Accept", "application/json");
-		return conn;
-	}
 }
