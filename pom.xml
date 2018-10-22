@@ -11,7 +11,7 @@
   <name>${project.artifactId}</name>
 
   <properties>
-    <helidon.version>0.10.0</helidon.version>
+    <helidon.version>0.10.4</helidon.version>
     <!-- Default package. Will be overriden by Maven archetype -->
     <package>se.enbohms.helidon</package>
     <mainClass>${package}.Main</mainClass>
